@@ -1,0 +1,16 @@
+---
+- name: This is an ansible playbook roles
+  hosts: local
+  become: yes
+  gather_facts: yes
+
+  roles:
+
+#   - /home/ansible/ansible-roles/upgrade-packages
+#   - /home/ansible/ansible-roles/firewalld
+   - roles/tomcat
+#   - /home/ansible/ansible-roles/terraform
+#   - /home/ansible/ansible-roles/jenkins
+
+
+

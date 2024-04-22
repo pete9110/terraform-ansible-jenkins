@@ -1,0 +1,7 @@
+[all:vars]
+inventory = hosts
+
+[local]
+127.0.0.1 ansible_connection=local
+
+
