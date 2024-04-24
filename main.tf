@@ -2,7 +2,7 @@ locals {
   vpc_id           = "vpc-060fd3a04d9436dab"
   subnet_id        = "subnet-08434308a602c1a7b"
   ssh_user         = "ec2-user"
-  key_name         = "devkey"
+  key_name         = "devkey.pem"
 }
 
 resource "aws_security_group" "tomcat" {
