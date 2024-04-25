@@ -2,7 +2,8 @@ locals {
   vpc_id           = "vpc-060fd3a04d9436dab"
   subnet_id        = "subnet-08434308a602c1a7b"
   ssh_user         = "ec2-user"
-  key_name         = "devkey.pem"
+  key_name         = "devkey"
+  private_key_path = "/home/ec2-user/project/devkey.pem"
 }
 
 resource "aws_security_group" "tomcat" {
@@ -51,12 +52,12 @@ resource "aws_instance" "tomcat" {
     connection {
       type        = "ssh"
       user        = local.ssh_user
-      private_key = file(local.key_name)
+      private_key = file(local.private_key_path)
       host        = aws_instance.tomcat.public_ip
     }
   }
   provisioner "local-exec" {
-    command = "ansible-playbook  -i ${aws_instance.tomcat.public_ip}, --private-key ${local.key_name} tomcat.yml"
+    command = "ansible-playbook  -i ${aws_instance.tomcat.public_ip}, --private-key ${local.private_key_path} tomcat.yml"
   }
 }
 
